@@ -273,7 +273,7 @@ export default function HomePage({route, navigation}) {
 
     dispatcher(createTodo({todo: newTodo}));
 
-    translateY.value = withTiming(0);
+    translateY.value = withTiming(-10);
     setBottomNavVisible(false);
   };
 
@@ -327,7 +327,7 @@ export default function HomePage({route, navigation}) {
   //Gesture Handlers
 
   //Bottom NavBar Gesture
-  const translateY = useSharedValue(0);
+  const translateY = useSharedValue(-10);
   const panGestureEvent = useAnimatedGestureHandler({
     onStart: (event, context) => {
       context.startY = translateY.value;
@@ -342,7 +342,7 @@ export default function HomePage({route, navigation}) {
         translateY.value = withSpring(height * -0.7);
         runOnJS(setBottomNavVisible)(true);
       } else {
-        translateY.value = withSpring(0);
+        translateY.value = withSpring(-10);
         runOnJS(setBottomNavVisible)(false);
       }
     },
@@ -783,7 +783,7 @@ export default function HomePage({route, navigation}) {
                   ]}
                   title="Cancel"
                   onPress={() => {
-                    translateY.value = withTiming(0);
+                    translateY.value = withTiming(-10);
                     setBottomNavVisible(false);
                   }}
                 />

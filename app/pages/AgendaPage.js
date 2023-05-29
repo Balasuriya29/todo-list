@@ -39,35 +39,6 @@ const AgendaPage = ({navigation, route}) => {
 
       route.params.forEach(item => {
         let emote = '📝';
-        // switch (item.categories[0]) {
-        //   case "Meeting":
-        //     emote += "🤝\n";
-        //     break;
-
-        //   case "Review":
-        //     emote += "📈\n";
-        //     break;
-
-        //   case "Marketing":
-        //     emote += "🔊\n";
-        //     break;
-
-        //   case "Design Project":
-        //     emote += "🎨\n";
-        //     break;
-
-        //   case "College":
-        //     emote += "🎓\n";
-        //     break;
-
-        //   case "Movie":
-        //     emote += "🍿\n";
-        //     break;
-
-        //   default:
-        //     emote += "📝";
-        //     break;
-        // }
         const withEmojis = /\p{Extended_Pictographic}/u;
 
         if (withEmojis.test(item.categories[0].slice(0, 2)))

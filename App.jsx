@@ -12,7 +12,7 @@ import AgendaPage from "./app/pages/AgendaPage";
 import ProfilePage from "./app/pages/ProfilePage";
 import EditProfilePage from "./app/pages/EditProfilePage";
 import store from "./app/features/store";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { AppState } from "react-native";
 import { RESET, persister } from "./app/features/actions";
 
@@ -23,16 +23,11 @@ const { Navigator, Screen } = createNativeStackNavigator();
 let isLoginPage = true;
 
 export default function NavigatorPage() {
-  //Appstate reference
-  const appState = useRef(AppState.currentState);
-
   //Listener for App Activeness
   useEffect(() => {
     const subscribe = AppState.addEventListener("change", (nextAppState) => {
-      appState.current = nextAppState;
-
-      if (!isLoginPage && appState.current === "background") {
-        console.log("AppState", appState.current);
+      if (!isLoginPage && nextAppState === "background") {
+        console.log("AppState", nextAppState);
         store.dispatch(persister(store.getState()));
       }
     });
